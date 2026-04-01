@@ -40,54 +40,105 @@ def _is_blocked(url: str) -> bool:
 
 def _parse_results(html: str, max_results: int) -> list[ArticleResult]:
     """
-    Parses the fully rendered Google HTML using BeautifulSoup.
-    Playwright fetches the page, this function extracts the data.
-    Keeping them separate makes it easy to unit test parsing logic.
+    Tries multiple selector strategies so it works across
+    different Google HTML structures and environments.
     """
     soup = BeautifulSoup(html, "html.parser")
     results: list[ArticleResult] = []
 
+    # --- Strategy 1: div#rso > h3 > parent anchor (current approach) ---
     rso = soup.select_one("div#rso")
-    if not rso:
-        logger.warning("[GoogleScraper] div#rso not found")
-        return []
+    if rso:
+        logger.info(f"[GoogleScraper] Strategy 1 — h3 count in rso: {len(rso.find_all('h3'))}")
+        for h3 in rso.find_all("h3"):
+            anchor = h3.find_parent("a")
+            if not anchor:
+                continue
+            href = anchor.get("href", "")
+            if not href.startswith("http") or _is_blocked(href):
+                continue
+            title = h3.get_text(strip=True)
+            if not title:
+                continue
+            snippet = _extract_snippet(anchor)
+            results.append(ArticleResult(
+                title=title,
+                url=href,
+                source=_extract_domain(href),
+                snippet=snippet,
+            ))
+            if len(results) >= max_results:
+                break
 
-    all_h3s = rso.find_all("h3")
-    logger.info(f"[GoogleScraper] h3 count in rso: {len(all_h3s)}")
+    if results:
+        logger.info(f"[GoogleScraper] Strategy 1 succeeded: {len(results)} results")
+        return results
 
-    for i, h3 in enumerate(all_h3s):
-        title = h3.get_text(strip=True)
-        logger.info(f"[GoogleScraper] h3[{i}] title: {title!r}")
-
+    # --- Strategy 2: any h3 with a parent anchor containing http ---
+    logger.info("[GoogleScraper] Strategy 1 failed, trying Strategy 2")
+    for h3 in soup.find_all("h3"):
         anchor = h3.find_parent("a")
         if not anchor:
-            logger.info(f"[GoogleScraper] h3[{i}] — no parent <a> found, skipping")
             continue
-
         href = anchor.get("href", "")
-        logger.info(f"[GoogleScraper] h3[{i}] — href: {href!r}")
-
-        if not href.startswith("http"):
-            logger.info(f"[GoogleScraper] h3[{i}] — skipped: not http")
+        if not href.startswith("http") or _is_blocked(href):
             continue
-
-        if _is_blocked(href):
-            logger.info(f"[GoogleScraper] h3[{i}] — skipped: blocked domain")
+        title = h3.get_text(strip=True)
+        if not title:
             continue
-
-        source = _extract_domain(href)
+        snippet = _extract_snippet(anchor)
         results.append(ArticleResult(
             title=title,
             url=href,
-            source=source,
-            snippet=None,
+            source=_extract_domain(href),
+            snippet=snippet,
         ))
-
         if len(results) >= max_results:
             break
 
-    logger.info(f"[GoogleScraper] Final result count: {len(results)}")
+    if results:
+        logger.info(f"[GoogleScraper] Strategy 2 succeeded: {len(results)} results")
+        return results
+
+    # --- Strategy 3: all anchors with href starting http that have text ---
+    logger.info("[GoogleScraper] Strategy 2 failed, trying Strategy 3")
+    seen = set()
+    for anchor in soup.find_all("a", href=True):
+        href = anchor["href"]
+        if not href.startswith("http") or _is_blocked(href):
+            continue
+        if href in seen:
+            continue
+        title = anchor.get_text(strip=True)
+        if len(title) < 20:  # skip nav links and short labels
+            continue
+        seen.add(href)
+        results.append(ArticleResult(
+            title=title[:120],
+            url=href,
+            source=_extract_domain(href),
+            snippet=None,
+        ))
+        if len(results) >= max_results:
+            break
+
+    logger.info(f"[GoogleScraper] Strategy 3 result count: {len(results)}")
     return results
+
+
+def _extract_snippet(anchor) -> str | None:
+    """
+    Walks up from the anchor to find a nearby text block
+    that looks like a description snippet.
+    """
+    container = anchor.find_parent("div")
+    if not container:
+        return None
+    for div in container.find_all("div"):
+        text = div.get_text(strip=True)
+        if 40 < len(text) < 400:
+            return text
+    return None
 
 
 def scrape_google_articles(
@@ -138,9 +189,9 @@ def scrape_google_articles(
 
         try:
             page.goto(url, wait_until="networkidle", timeout=30000)
-
             page.wait_for_timeout(2000)
 
+            # Handle consent popup
             try:
                 consent_btn = page.locator("button:has-text('Accept all')")
                 if consent_btn.is_visible(timeout=3000):
@@ -149,11 +200,21 @@ def scrape_google_articles(
             except PlaywrightTimeout:
                 pass
 
-            page.wait_for_selector("div#rso", timeout=15000)
+            # Try div#rso first, fall back to just waiting for h3
+            try:
+                page.wait_for_selector("div#rso", timeout=10000)
+            except PlaywrightTimeout:
+                logger.warning("[GoogleScraper] div#rso not found, trying h3 fallback")
+                try:
+                    page.wait_for_selector("h3", timeout=8000)
+                except PlaywrightTimeout:
+                    logger.error("[GoogleScraper] No results structure found at all")
+                    return []
+
             html = page.content()
 
         except PlaywrightTimeout:
-            logger.error("[GoogleScraper] Timed out waiting for results")
+            logger.error("[GoogleScraper] Page load timed out")
             return []
         except Exception as e:
             logger.error(f"[GoogleScraper] Unexpected error: {e}")
