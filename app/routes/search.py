@@ -1,7 +1,9 @@
 from fastapi import APIRouter, HTTPException, Query
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
+import os
 from app.models.schemas import SearchRequest, SearchResponse
 from app.services.search_service import SearchService
+from pathlib import Path
 
 
 router = APIRouter(prefix="/api/v1", tags=["search"])
@@ -146,3 +148,30 @@ async def debug_screenshot(name: str):
         <h2>Page title: {result['title']}</h2>
         <img src="data:image/png;base64,{result['screenshot']}" style="max-width:100%">
     """)
+
+
+@router.delete("/cache")
+async def clear_cache():
+    """Delete all saved result JSON files."""
+    results_dir = Path(os.getenv("RESULTS_DIR", "results"))
+    if not results_dir.exists():
+        return JSONResponse({"message": "Cache already empty", "deleted": 0})
+
+    deleted = 0
+    for f in results_dir.glob("*.json"):
+        f.unlink()
+        deleted += 1
+
+    return JSONResponse({"message": f"Cleared {deleted} cached result(s)", "deleted": deleted})
+
+@router.delete("/cache/{filename}")
+async def clear_single_cache(filename: str):
+    """Delete a single cached result by filename."""
+    results_dir = Path(os.getenv("RESULTS_DIR", "results"))
+    filepath = results_dir / filename
+
+    if not filepath.exists():
+        raise HTTPException(status_code=404, detail="Cache file not found")
+
+    filepath.unlink()
+    return JSONResponse({"message": f"Deleted {filename}"})
