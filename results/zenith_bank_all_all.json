@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-04-01T06:46:16.356520Z",
+  "query_meta": {
+    "name": "zenith bank",
+    "city": null,
+    "year": null,
+    "month": null
+  },
+  "articles": [
+    {
+      "title": "Internet Banking - Zenith Bank",
+      "url": "https://ibank.zenithbank.com/internetbanking/",
+      "source": "ibank.zenithbank.com",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Zenith Bank CorporateIBank | Index",
+      "url": "https://icorporate.zenithbank.com/coporate-internetbanking/",
+      "source": "icorporate.zenithbank.com",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Zenith Bank",
+      "url": "https://en.wikipedia.org/wiki/Zenith_Bank",
+      "source": "en.wikipedia.org",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Zenith Bank Plc",
+      "url": "https://ng.linkedin.com/company/zenith-bank-group",
+      "source": "ng.linkedin.com",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Personal Banking - Zenith Bank",
+      "url": "https://zenithbank.euwest01.umbraco.io/personal-banking/",
+      "source": "zenithbank.euwest01.umbraco.io",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Internet Banking - Zenith Bank",
+      "url": "https://zenithbank.euwest01.umbraco.io/personal-banking/electronic-banking/internet-banking/",
+      "source": "zenithbank.euwest01.umbraco.io",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Zenith Bank UK - In your best interest",
+      "url": "https://www.zenith-bank.co.uk/",
+      "source": "zenith-bank.co.uk",
+      "snippet": null,
+      "content_type": "article"
+    }
+  ],
+  "total": 7,
+  "saved_to": null
+}

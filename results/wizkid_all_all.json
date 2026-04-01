@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-04-01T06:27:42.842395Z",
+  "query_meta": {
+    "name": "wizkid",
+    "city": null,
+    "year": null,
+    "month": null
+  },
+  "articles": [
+    {
+      "title": "Wizkid",
+      "url": "https://en.wikipedia.org/wiki/Wizkid",
+      "source": "en.wikipedia.org",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Wizkid",
+      "url": "https://www.wizkidofficial.com/",
+      "source": "wizkidofficial.com",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Wizkid",
+      "url": "https://open.spotify.com/artist/3tVQdUvClmAT7URs9V3rsp",
+      "source": "open.spotify.com",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Wizkid (@wizkidayo) / Posts / X",
+      "url": "https://x.com/wizkidayo?lang=en",
+      "source": "x.com",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Wizkid",
+      "url": "https://music.apple.com/ly/artist/wizkid/309335750",
+      "source": "music.apple.com",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "StarBoy TV",
+      "url": "https://www.youtube.com/channel/UCi7Cbr-F3zFQjwafFh5RWJA",
+      "source": "youtube.com",
+      "snippet": null,
+      "content_type": "article"
+    }
+  ],
+  "total": 6,
+  "saved_to": null
+}
