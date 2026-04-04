@@ -1,20 +1,29 @@
-import asyncio
 import logging
-from app.scrappers.google_api import search_google_api
+from app.scrappers.google import scrape_google_articles
 from app.services.storage import save_results, load_results
 from app.models.schemas import SearchRequest, SearchResponse
+import asyncio
+
 
 logger = logging.getLogger(__name__)
 
 
 class SearchService:
+    """
+    Orchestrates all scrapers and normalises their output
+    into a unified SearchResponse.
 
+    In future phases this class will also call:
+        - YouTubeSearcher (Phase 2)
+        - ImageSearcher (Phase 3)
+    """
     async def search(
         self,
         request: SearchRequest,
         use_cache: bool = True,
     ) -> SearchResponse:
 
+        # --- Cache check ---
         if use_cache:
             cached = load_results(request.name, request.year, request.month)
             if cached:
@@ -27,11 +36,11 @@ class SearchService:
 
         logger.info(f"[SearchService] Searching for {request.name!r}")
 
-        # Now just a regular async call — no thread executor needed
-        # because requests library is used instead of Playwright
+        # Run the blocking Playwright call in a thread pool
+        # so FastAPI's async event loop stays unblocked
         articles = await asyncio.get_event_loop().run_in_executor(
             None,
-            lambda: search_google_api(
+            lambda: scrape_google_articles(
                 name=request.name,
                 city=request.city,
                 year=request.year,
