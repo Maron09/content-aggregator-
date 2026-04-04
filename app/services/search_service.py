@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from app.scrapers.google_api import search_google_api
+from app.scrappers.google_api import search_google_api
 from app.services.storage import save_results, load_results
 from app.models.schemas import SearchRequest, SearchResponse
 
