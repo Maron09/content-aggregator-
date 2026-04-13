@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: content-aggregator
+    env: python
+    buildCommand: pip install -r requirements.txt && playwright install chromium && playwright install-deps chromium
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: RESULTS_DIR
+        value: results
+      - key: DOWNLOADS_DIR
+        value: downloads
