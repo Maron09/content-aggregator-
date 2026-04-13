@@ -293,3 +293,25 @@ async def debug_images(name: str):
         <h2>Selector counts: {counts}</h2>
         <img src="data:image/png;base64,{screenshot_b64}" style="max-width:100%">
     """)
+
+
+
+@router.get("/debug/files")
+async def debug_files():
+    import os
+    downloads = Path(os.getenv("DOWNLOADS_DIR", "downloads"))
+    result = {
+        "downloads_dir": str(downloads),
+        "exists": downloads.exists(),
+        "cwd": os.getcwd(),
+        "contents": [],
+    }
+    if downloads.exists():
+        for root, dirs, files in os.walk(downloads):
+            for f in files:
+                full = os.path.join(root, f)
+                result["contents"].append({
+                    "path": full,
+                    "size": os.path.getsize(full),
+                })
+    return result
