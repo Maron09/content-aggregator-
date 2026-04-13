@@ -34,7 +34,7 @@ def download_video(item: DownloadItem, folder: Path) -> dict:
     safe_title = _safe_filename(item.title)
     
     ydl_opts = {
-        "format": "bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+        "format": "best[ext=mp4]/best[height<=1080]/best",
         "outtmpl": str(folder / f"{safe_title}.%(ext)s"),
         "quiet": True,
         "no_warnings": True,
