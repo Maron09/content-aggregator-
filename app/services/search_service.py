@@ -1,7 +1,10 @@
 import logging
-from app.scrappers.google import scrape_google_articles
-from app.services.storage import save_results, load_results
-from app.models.schemas import SearchRequest, SearchResponse
+from scrappers.google import scrape_google_articles
+from scrappers.youtube import search_youtube
+from scrappers.images import scrape_google_images
+from services.storage import save_results, load_results
+from models.schemas import SearchRequest, SearchResponse
+from services.normalizer import normalize_response
 import asyncio
 
 
@@ -35,10 +38,11 @@ class SearchService:
                 })
 
         logger.info(f"[SearchService] Searching for {request.name!r}")
+        
+        loop = asyncio.get_event_loop()
 
-        # Run the blocking Playwright call in a thread pool
-        # so FastAPI's async event loop stays unblocked
-        articles = await asyncio.get_event_loop().run_in_executor(
+        # Run both scrapers concurrently in thread pool
+        articles_task = loop.run_in_executor(
             None,
             lambda: scrape_google_articles(
                 name=request.name,
@@ -47,6 +51,30 @@ class SearchService:
                 month=request.month,
             )
         )
+
+        videos_task = loop.run_in_executor(
+            None,
+            lambda: search_youtube(
+                name=request.name,
+                city=request.city,
+                year=request.year,
+                month=request.month,
+            )
+        )
+        
+        image_task = loop.run_in_executor(
+            None,
+            lambda: scrape_google_images(
+                name=request.name,
+                city=request.city,
+                year=request.year,
+                month=request.month,
+            )
+        )
+
+        # Run the blocking Playwright call in a thread pool
+        # so FastAPI's async event loop stays unblocked
+        articles, videos, images = await asyncio.gather(articles_task, videos_task, image_task)
 
         query_meta = {
             "name": request.name,
@@ -58,9 +86,12 @@ class SearchService:
         response = SearchResponse(
             query_meta=query_meta,
             articles=articles,
-            total=len(articles),
+            videos=videos,
+            images=images,
+            total=len(articles) + len(videos),
         )
 
+        response = normalize_response(response)
         saved_path = save_results(response.model_dump())
         response.saved_to = saved_path
 

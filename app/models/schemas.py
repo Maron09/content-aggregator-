@@ -32,9 +32,42 @@ class ArticleResult(BaseModel):
     snippet: Optional[str] = None
     content_type: ContentType = ContentType.article
 
+class VideoResult(BaseModel):
+    title: str
+    url: str
+    source: str = "youtube.com"
+    channel: str
+    thumbnail: Optional[str] = None
+    published_at: Optional[str] = None
+    view_count: Optional[str] = None
+    duration: Optional[str] = None  
+    content_type: ContentType = ContentType.video
+
+
+class ImageResult(BaseModel):
+    title: str
+    image_url: str
+    source_url: str
+    source: str
+    width: Optional[int] = None
+    height: Optional[int] = None
+    content_type: ContentType = ContentType.image
 
 class SearchResponse(BaseModel):
     query_meta: dict      # stores the original input for traceability
     articles: list[ArticleResult]
+    videos: list[VideoResult] = []
+    images: list[ImageResult] = []
     total: int
     saved_to: Optional[str] = None
+
+
+class DownloadItem(BaseModel):
+    url: str
+    content_type: ContentType
+    title: str = "untitled"
+
+
+class DownloadRequest(BaseModel):
+    items: list[DownloadItem]
+    query_name: str = "download"

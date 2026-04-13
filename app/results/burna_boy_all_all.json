@@ -1,0 +1,356 @@
+{
+  "generated_at": "2026-04-13T03:50:30.525691Z",
+  "query_meta": {
+    "name": "burna boy",
+    "city": null,
+    "year": null,
+    "month": null
+  },
+  "articles": [
+    {
+      "title": "Burna Boy - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Burna_Boy#:~:text=Damini%20Ebunoluwa%20Ogulu%20(born%202,from%20Ahoada%20West%2C%20Rivers%20State.",
+      "source": "Wikipedia",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Burna Boy",
+      "url": "https://en.wikipedia.org/wiki/Burna_Boy",
+      "source": "Wikipedia",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Burna Boy | Official Website",
+      "url": "https://www.onaspaceship.com/",
+      "source": "Onaspaceship",
+      "snippet": "Burna Boy | Official Website",
+      "content_type": "article"
+    },
+    {
+      "title": "Burna Boy",
+      "url": "https://music.apple.com/gm/artist/burna-boy/591899010",
+      "source": "Music",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Burna Boy",
+      "url": "https://soundcloud.com/burnaboy",
+      "source": "Soundcloud",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Burna Boy",
+      "url": "https://open.spotify.com/artist/3wcj11K77LjEY1PkEazffa",
+      "source": "Spotify",
+      "snippet": null,
+      "content_type": "article"
+    },
+    {
+      "title": "Burna Boy",
+      "url": "https://www.youtube.com/channel/UCEzDdNqNkT-7rSfSGSr1hWg",
+      "source": "YouTube",
+      "snippet": null,
+      "content_type": "article"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Burna Boy",
+      "url": "https://www.youtube.com/watch?v=UCEzDdNqNkT-7rSfSGSr1hWg",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/UCEzDdNqNkT-7rSfSGSr1hWg/mqdefault.jpg",
+      "published_at": null,
+      "view_count": null,
+      "duration": null,
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - City Boys [Official Music Video]",
+      "url": "https://www.youtube.com/watch?v=hLDQ88vAhIs",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/hLDQ88vAhIs/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "110.7M views",
+      "duration": "2:34",
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - Real Life feat. Stormzy [Official Music Video]",
+      "url": "https://www.youtube.com/watch?v=dXeOBkKdiAg",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/dXeOBkKdiAg/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "48.8M views",
+      "duration": "5:34",
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - For Everybody [Official Music Video]",
+      "url": "https://www.youtube.com/watch?v=jUkcAa_IBU0",
+      "source": "youtube.com",
+      "channel": "Burna Boy and SportyTV",
+      "thumbnail": "https://img.youtube.com/vi/jUkcAa_IBU0/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "7.0M views",
+      "duration": "2:58",
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - For My Hand feat. Ed Sheeran [Official Music Video]",
+      "url": "https://www.youtube.com/watch?v=EDZ25anwgjc",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/EDZ25anwgjc/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "206.8M views",
+      "duration": "2:47",
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - Tested, Approved & Trusted [Official Music Video]",
+      "url": "https://www.youtube.com/watch?v=bGsKQxIwEeQ",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/bGsKQxIwEeQ/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "58.0M views",
+      "duration": "3:25",
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - On The Low [Official Music Video]",
+      "url": "https://www.youtube.com/watch?v=Ecl8Aod0Tl0",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/Ecl8Aod0Tl0/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "462.6M views",
+      "duration": "3:23",
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - Giza (feat. Seyi Vibez) [Official Music Video]",
+      "url": "https://www.youtube.com/watch?v=bWxyVF1LJAo",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/bWxyVF1LJAo/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "16.6M views",
+      "duration": "2:55",
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - 28 Grams [Official Audio]",
+      "url": "https://www.youtube.com/watch?v=6osB5y_-1Ao",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/6osB5y_-1Ao/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "1.3M views",
+      "duration": "2:15",
+      "content_type": "video"
+    },
+    {
+      "title": "Burna Boy - 23 [Official Music Video]",
+      "url": "https://www.youtube.com/watch?v=PFPfxcvRshk",
+      "source": "youtube.com",
+      "channel": "Burna Boy",
+      "thumbnail": "https://img.youtube.com/vi/PFPfxcvRshk/mqdefault.jpg",
+      "published_at": null,
+      "view_count": "45.7M views",
+      "duration": "4:21",
+      "content_type": "video"
+    }
+  ],
+  "images": [
+    {
+      "title": "burna boy",
+      "image_url": "https://fox40.com/wp-content/uploads/sites/13/2025/07/686f0458a19039.35923562.jpeg?w\\u003d1440\\u0026h\\u003d2560\\u0026crop\\u003d1",
+      "source_url": "https://fox40.com/wp-content/uploads/sites/13/2025/07/686f0458a19039.35923562.jpeg?w\\u003d1440\\u0026h\\u003d2560\\u0026crop\\u003d1",
+      "source": "images.google.com",
+      "width": 2560,
+      "height": 1440,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://www.stylerave.com/wp-content/uploads/2025/02/GjsLF5MWIAAvwUR-1.jpeg",
+      "source_url": "https://www.stylerave.com/wp-content/uploads/2025/02/GjsLF5MWIAAvwUR-1.jpeg",
+      "source": "images.google.com",
+      "width": 1000,
+      "height": 1000,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://afrobeatsmagazine.com/wp-content/uploads/2025/02/Burna-Boy-2-e1740084989657.jpg",
+      "source_url": "https://afrobeatsmagazine.com/wp-content/uploads/2025/02/Burna-Boy-2-e1740084989657.jpg",
+      "source": "images.google.com",
+      "width": 1085,
+      "height": 1080,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://media.gq.com/photos/5e5ebb6de196b50008c072e5/master/w_1600%2Cc_limit/burna-boy-gq-style-spring-summer-2020-11.jpg",
+      "source_url": "https://media.gq.com/photos/5e5ebb6de196b50008c072e5/master/w_1600%2Cc_limit/burna-boy-gq-style-spring-summer-2020-11.jpg",
+      "source": "images.google.com",
+      "width": 2400,
+      "height": 1600,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://media.gq.com/photos/5e5ebc2cb7235e00084122d3/4:3/w_2999,h_2249,c_limit/burna-boy-gq-style-spring-summer-2020-promo.jpg",
+      "source_url": "https://media.gq.com/photos/5e5ebc2cb7235e00084122d3/4:3/w_2999,h_2249,c_limit/burna-boy-gq-style-spring-summer-2020-promo.jpg",
+      "source": "images.google.com",
+      "width": 2249,
+      "height": 2999,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://cdn.vanguardngr.com/wp-content/uploads/2023/08/Burna-BoyItoldthem.webp",
+      "source_url": "https://cdn.vanguardngr.com/wp-content/uploads/2023/08/Burna-BoyItoldthem.webp",
+      "source": "images.google.com",
+      "width": 536,
+      "height": 750,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Untold_2024_-Burna_Boy_%2853927293629%29_%28cropped%29.jpg",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Untold_2024_-Burna_Boy_%2853927293629%29_%28cropped%29.jpg",
+      "source": "images.google.com",
+      "width": 1338,
+      "height": 1274,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://www.musicinafrica.net/sites/default/files/styles/article_slider_large/public/images/article/202008/burnaboy.jpg?itok\\u003dJYlhIrZ_",
+      "source_url": "https://www.musicinafrica.net/sites/default/files/styles/article_slider_large/public/images/article/202008/burnaboy.jpg?itok\\u003dJYlhIrZ_",
+      "source": "images.google.com",
+      "width": 446,
+      "height": 744,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/42c0/live/97852eb0-60cf-11f0-b428-cb3de5783b16.jpg",
+      "source_url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/42c0/live/97852eb0-60cf-11f0-b428-cb3de5783b16.jpg",
+      "source": "images.google.com",
+      "width": 2159,
+      "height": 3840,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://cdn-images.dzcdn.net/images/artist/ad15b7f03325752d60db9e4d39c079ae/1900x1900-000000-81-0-0.jpg",
+      "source_url": "https://cdn-images.dzcdn.net/images/artist/ad15b7f03325752d60db9e4d39c079ae/1900x1900-000000-81-0-0.jpg",
+      "source": "images.google.com",
+      "width": 1200,
+      "height": 1200,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://www.atlanticrecords.com/sites/g/files/g2000015596/files/styles/artist_image_detail/public/2023-01/080822_BB-ATLWebsite_300x300.png?itok\\u003d0HgtcAXi",
+      "source_url": "https://www.atlanticrecords.com/sites/g/files/g2000015596/files/styles/artist_image_detail/public/2023-01/080822_BB-ATLWebsite_300x300.png?itok\\u003d0HgtcAXi",
+      "source": "images.google.com",
+      "width": 1000,
+      "height": 1000,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://www.yanga899.fm/wp-content/uploads/2025/04/Burna-Boy-News-Central-TV-1-819x1024-1.jpg",
+      "source_url": "https://www.yanga899.fm/wp-content/uploads/2025/04/Burna-Boy-News-Central-TV-1-819x1024-1.jpg",
+      "source": "images.google.com",
+      "width": 1024,
+      "height": 819,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://www.billboard.com/wp-content/uploads/2024/12/burna-boy-press-shot-by-nee-2024-billboard-1548.jpg?w\\u003d1024",
+      "source_url": "https://www.billboard.com/wp-content/uploads/2024/12/burna-boy-press-shot-by-nee-2024-billboard-1548.jpg?w\\u003d1024",
+      "source": "images.google.com",
+      "width": 677,
+      "height": 1024,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://images.genius.com/7af3374828b9ef22cc7373741880a597.1000x1000x1.jpg",
+      "source_url": "https://images.genius.com/7af3374828b9ef22cc7373741880a597.1000x1000x1.jpg",
+      "source": "images.google.com",
+      "width": 1000,
+      "height": 1000,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://africa.billboard.com/wp-content/uploads/2026/01/Sporty-BurnaBoy-0578-copy.jpeg",
+      "source_url": "https://africa.billboard.com/wp-content/uploads/2026/01/Sporty-BurnaBoy-0578-copy.jpeg",
+      "source": "images.google.com",
+      "width": 1333,
+      "height": 2000,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://miro.medium.com/1*aCX146YygFCNMxBQUNeShA.jpeg",
+      "source_url": "https://miro.medium.com/1*aCX146YygFCNMxBQUNeShA.jpeg",
+      "source": "images.google.com",
+      "width": 2048,
+      "height": 1380,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://www.the360mag.com/wp-content/uploads/2025/12/wp-17653016378038909149056675377492.jpg",
+      "source_url": "https://www.the360mag.com/wp-content/uploads/2025/12/wp-17653016378038909149056675377492.jpg",
+      "source": "images.google.com",
+      "width": 2000,
+      "height": 2000,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://d1jcea4y7xhp7l.cloudfront.net/wp-content/uploads/2025/07/Burna-Boy.jpg",
+      "source_url": "https://d1jcea4y7xhp7l.cloudfront.net/wp-content/uploads/2025/07/Burna-Boy.jpg",
+      "source": "images.google.com",
+      "width": 1248,
+      "height": 2048,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://img.businessoffashion.com/resizer/v2/https%3A%2F%2Fprod-bof-media.s3.eu-west-1.amazonaws.com%2Fimport%2Fprofiles%2Fasset%2F1777760340287944%2Fburna-boy-crop-1777760441394679.jpg?auth\\u003d8435179b7ddd8c279542725afe389d66464d9b16c79627ec939db6918ce8eb88\\u0026width\\u003d1200\\u0026height\\u003d1200\\u0026smart\\u003dtrue",
+      "source_url": "https://img.businessoffashion.com/resizer/v2/https%3A%2F%2Fprod-bof-media.s3.eu-west-1.amazonaws.com%2Fimport%2Fprofiles%2Fasset%2F1777760340287944%2Fburna-boy-crop-1777760441394679.jpg?auth\\u003d8435179b7ddd8c279542725afe389d66464d9b16c79627ec939db6918ce8eb88\\u0026width\\u003d1200\\u0026height\\u003d1200\\u0026smart\\u003dtrue",
+      "source": "images.google.com",
+      "width": 1200,
+      "height": 1200,
+      "content_type": "image"
+    },
+    {
+      "title": "burna boy",
+      "image_url": "https://images.discovery-prod.axs.com/2025/06/burna-boy_06-18-25_20_6852e94a33928.jpg",
+      "source_url": "https://images.discovery-prod.axs.com/2025/06/burna-boy_06-18-25_20_6852e94a33928.jpg",
+      "source": "images.google.com",
+      "width": 564,
+      "height": 564,
+      "content_type": "image"
+    }
+  ],
+  "total": 37,
+  "saved_to": null
+}

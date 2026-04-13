@@ -1,9 +1,11 @@
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import HTMLResponse, JSONResponse
 import os
-from app.models.schemas import SearchRequest, SearchResponse
-from app.services.search_service import SearchService
+from models.schemas import SearchRequest, SearchResponse, DownloadRequest
+from services.search_service import SearchService
+from services.downloader import run_downloads
 from pathlib import Path
+import asyncio
 
 
 router = APIRouter(prefix="/api/v1", tags=["search"])
@@ -26,6 +28,26 @@ async def search(
         )
 
     return result
+
+
+@router.post("/download")
+async def download(payload: DownloadRequest):
+    """
+    Downloads selected items to the local downloads/ folder.
+    Videos use yt-dlp, images use HTTP, articles saved as text.
+    """
+    if not payload.items:
+        raise HTTPException(status_code=400, detail="No items provided")
+
+    try:
+        results = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: run_downloads(payload.items, payload.query_name)
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    return results
 
 
 @router.get("/debug/playwright")
@@ -175,3 +197,56 @@ async def clear_single_cache(filename: str):
 
     filepath.unlink()
     return JSONResponse({"message": f"Deleted {filename}"})
+
+
+@router.get("/debug/images")
+async def debug_images(name: str):
+    import asyncio
+    import base64
+    from playwright.sync_api import sync_playwright
+    from urllib.parse import urlencode
+    from fastapi.responses import HTMLResponse
+
+    def run():
+        params = {"q": name, "tbm": "isch", "hl": "en"}
+        url = f"https://www.google.com/search?{urlencode(params)}"
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=["--no-sandbox", "--disable-blink-features=AutomationControlled"],
+            )
+            context = browser.new_context(
+                viewport={"width": 1280, "height": 800},
+                locale="en-US",
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/124.0.0.0 Safari/537.36"
+                ),
+            )
+            page = context.new_page()
+            page.goto(url, wait_until="networkidle", timeout=30000)
+            page.wait_for_timeout(3000)
+
+            screenshot = page.screenshot(full_page=False)
+            screenshot_b64 = base64.b64encode(screenshot).decode()
+
+            # Count useful selectors
+            counts = page.evaluate("""() => ({
+                imgs: document.querySelectorAll('img').length,
+                encryptedImgs: document.querySelectorAll('img[src*="encrypted-tbn"]').length,
+                dataSrc: document.querySelectorAll('img[data-src]').length,
+                scripts: document.querySelectorAll('script').length,
+                hasAF: document.body.innerHTML.includes('AF_initDataCallback'),
+            })""")
+
+            browser.close()
+            return screenshot_b64, counts
+
+    screenshot_b64, counts = await asyncio.get_event_loop().run_in_executor(None, run)
+
+    return HTMLResponse(f"""
+        <h2>Selector counts: {counts}</h2>
+        <img src="data:image/png;base64,{screenshot_b64}" style="max-width:100%">
+    """)

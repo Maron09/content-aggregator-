@@ -1,7 +1,7 @@
 import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from app.routes.search import router as search_router
+from routes.search import router as search_router
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 
