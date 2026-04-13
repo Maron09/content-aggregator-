@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Query
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 import os
 from app.models.schemas import SearchRequest, SearchResponse, DownloadRequest
 from app.services.search_service import SearchService
@@ -7,7 +7,7 @@ from app.services.downloader import run_downloads
 from pathlib import Path
 import asyncio
 
-
+DOWNLOADS_DIR = Path(os.getenv("DOWNLOADS_DIR", "downloads"))
 router = APIRouter(prefix="/api/v1", tags=["search"])
 search_service = SearchService()
 
@@ -48,6 +48,49 @@ async def download(payload: DownloadRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
     return results
+
+
+@router.get("/files")
+async def list_files():
+    """Lists all downloaded files grouped by search query."""
+    if not DOWNLOADS_DIR.exists():
+        return {"folders": []}
+
+    folders = []
+    for folder in sorted(DOWNLOADS_DIR.iterdir()):
+        if not folder.is_dir():
+            continue
+        files = [
+            {
+                "name": f.name,
+                "size_kb": round(f.stat().st_size / 1024, 1),
+                "download_url": f"/api/v1/files/{folder.name}/{f.name}",
+            }
+            for f in sorted(folder.iterdir())
+            if f.is_file()
+        ]
+        if files:
+            folders.append({"folder": folder.name, "files": files})
+
+    return {"folders": folders}
+
+
+@router.get("/files/{folder}/{filename}")
+async def download_file(folder: str, filename: str):
+    """Serves a specific downloaded file."""
+    # Sanitize to prevent path traversal attacks
+    safe_folder = Path(folder).name
+    safe_filename = Path(filename).name
+    filepath = DOWNLOADS_DIR / safe_folder / safe_filename
+
+    if not filepath.exists():
+        raise HTTPException(status_code=404, detail="File not found")
+
+    return FileResponse(
+        path=filepath,
+        filename=safe_filename,
+        media_type="application/octet-stream",
+    )
 
 
 @router.get("/debug/playwright")
