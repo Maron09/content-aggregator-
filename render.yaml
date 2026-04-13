@@ -2,7 +2,7 @@ services:
   - type: web
     name: content-aggregator
     env: python
-    buildCommand: pip install -r requirements.txt && playwright install chromium && playwright install-deps chromium
+    buildCommand: pip install -r requirements.txt && playwright install chromium && playwright install-deps chromium && apt-get install -y ffmpeg
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: APP_ENV
