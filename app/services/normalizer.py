@@ -1,6 +1,6 @@
 import re
 import logging
-from models.schemas import ArticleResult, VideoResult, ImageResult, SearchResponse
+from app.models.schemas import ArticleResult, VideoResult, ImageResult, SearchResponse
 
 
 logger = logging.getLogger(__name__)

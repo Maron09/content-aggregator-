@@ -3,7 +3,7 @@ import calendar
 import logging
 from urllib.parse import urlencode
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
-from models.schemas import ImageResult
+from app.models.schemas import ImageResult
 
 logger = logging.getLogger(__name__)
 

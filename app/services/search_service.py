@@ -1,10 +1,10 @@
 import logging
-from scrappers.google import scrape_google_articles
-from scrappers.youtube import search_youtube
-from scrappers.images import scrape_google_images
-from services.storage import save_results, load_results
-from models.schemas import SearchRequest, SearchResponse
-from services.normalizer import normalize_response
+from app.scrappers.google import scrape_google_articles
+from app.scrappers.youtube import search_youtube
+from app.scrappers.images import scrape_google_images
+from app.services.storage import save_results, load_results
+from app.models.schemas import SearchRequest, SearchResponse
+from app.services.normalizer import normalize_response
 import asyncio
 
 

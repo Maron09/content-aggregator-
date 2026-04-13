@@ -1,7 +1,7 @@
 import calendar
 import logging
 import yt_dlp
-from models.schemas import VideoResult
+from app.models.schemas import VideoResult
 
 logger = logging.getLogger(__name__)
 

@@ -3,7 +3,7 @@ import re
 import logging
 import requests
 from pathlib import Path
-from models.schemas import DownloadItem, ContentType
+from app.models.schemas import DownloadItem, ContentType
 import yt_dlp
 
 

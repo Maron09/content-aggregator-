@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import HTMLResponse, JSONResponse
 import os
-from models.schemas import SearchRequest, SearchResponse, DownloadRequest
-from services.search_service import SearchService
-from services.downloader import run_downloads
+from app.models.schemas import SearchRequest, SearchResponse, DownloadRequest
+from app.services.search_service import SearchService
+from app.services.downloader import run_downloads
 from pathlib import Path
 import asyncio
 
