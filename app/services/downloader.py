@@ -10,7 +10,7 @@ import yt_dlp
 logger = logging.getLogger(__name__)
 
 
-DOWNLOADS_DIR = Path(os.getenv("DOWNLOADS_DIR", "downloads"))
+DOWNLOADS_DIR = Path(os.getenv("DOWNLOADS_DIR", "/tmp/downloads"))
 
 
 def _ensure_dir(folder: Path) -> None:

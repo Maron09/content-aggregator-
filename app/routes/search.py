@@ -7,7 +7,7 @@ from app.services.downloader import run_downloads
 from pathlib import Path
 import asyncio
 
-DOWNLOADS_DIR = Path(os.getenv("DOWNLOADS_DIR", "downloads"))
+DOWNLOADS_DIR = Path(os.getenv("DOWNLOADS_DIR", "/tmp/downloads"))
 router = APIRouter(prefix="/api/v1", tags=["search"])
 search_service = SearchService()
 
